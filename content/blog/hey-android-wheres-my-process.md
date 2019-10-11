@@ -1,5 +1,5 @@
 ---
-path: /android/hey-android-wheres-my-process/index.md
+path: /android/hey-android-wheres-my-process/
 date: 2019-10-11T17:54:08.066Z
 title: 'Hey Android, Where''s my Process?'
 description: '#android #testing #processkill'
