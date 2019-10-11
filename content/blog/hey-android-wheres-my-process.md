@@ -4,7 +4,7 @@ date: 2019-10-11T17:54:08.066Z
 title: 'Hey Android, Where''s my Process?'
 description: '#android #testing #processkill'
 ---
-This article is a followup on this [medium article](https://medium.com/mindorks/hey-android-please-keep-my-activities-7bf96ccc0a38) written by my friend Calvin. I would highly recommend you to go through it as it lays the foundation for this article.
+This article is a followup on this [medium article(https://medium.com/mindorks/hey-android-please-keep-my-activities-7bf96ccc0a38) written by my friend Calvin. I would highly recommend you to go through it as it lays the foundation for this article.
 
 We would be particularly dealing with process kill scenarios and explore potential solutions to mitigate.
 
