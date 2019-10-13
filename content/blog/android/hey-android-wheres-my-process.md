@@ -23,7 +23,7 @@ So it's the developer's responsibility to test his/her app for such scenarios fo
 ## How to simulate a process kill :wink:?
 Now that we have established the reason to test these edge cases, its time to simulate a process kill scenario.
 
-![](http://giphygifs.s3.amazonaws.com/media/8oPkn7Hl79J6g/giphy.gif)
+![](https://giphygifs.s3.amazonaws.com/media/8oPkn7Hl79J6g/giphy.gif)
 
 ### The Naive way
 The camera app on your phone is resource-intensive and requires a lot of RAM to run. Once you start the app, this results in the systematic killing of your background apps almost instantly. Mind well this might not be true for every scenario. Only opt for this approach if you are lazy :grin:.
