@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Nikhil Thkkar`,
+    title: `A Little bit of Everything`,
+    author: `Nikhil Thakkar`,
     description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://nikhi1.dev/`,
     social: {
       twitter: `_nikhi1`,
     },
@@ -47,9 +47,10 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-vscode`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `gatsby-remark-emoji`,
+          `gatsby-remark-prismjs`
         ],
       },
     },
@@ -79,5 +80,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `nikhi1-dev`
+      }
+    },
+    `gatsby-remark-reading-time`
   ],
 }

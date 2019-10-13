@@ -1,34 +1,31 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Tags from "../components/tags"
 import { rhythm, scale } from "../utils/typography"
+import Author from "../components/author"
+import Bio from "../components/bio"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const {data, location} = this.props
+    const post = data.markdownRemark
+    const tags = data.markdownRemark.frontmatter.tags
+    const readingTime = data.markdownRemark.fields.readingTime.text
     const { previous, next } = this.props.pageContext
 
+    
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={location} className={'article'}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
         <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
+        <Author date={post.frontmatter.date} readingTime={readingTime}/>
+        <Tags tags={{...tags}}/>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
@@ -36,7 +33,6 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
-
         <ul
           style={{
             display: `flex`,
@@ -82,8 +78,15 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMM DD")
         description
+        tags
+      }
+      fields {
+        slug
+        readingTime {
+          text
+        }
       }
     }
   }
