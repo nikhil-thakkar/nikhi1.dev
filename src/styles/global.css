@@ -1,29 +1,30 @@
 .article {
-margin: 24px 0 0 auto;
-width: 97%;
-max-width: 860px;
-padding: 0px 6px;
-background: white;
-background: var(--theme-container-background, white);
-position: relative;
-box-sizing: border-box;
-border: 1px solid #cecece;
-border: var(--theme-container-border, 1px solid #cecece);
-box-shadow: 1px 1px 0px #c2c2c2;
-box-shadow: var(--theme-container-box-shadow, 1px 1px 0px #c2c2c2);
-border-radius: 3px;
+	margin: 24px 0 0 auto;
+	width: 97%;
+	max-width: 860px;
+	padding: 0px 6px;
+	background: white;
+	background: var(--theme-container-background, white);
+	position: relative;
+	box-sizing: border-box;
+	border: 1px solid #cecece;
+	border: var(--theme-container-border, 1px solid #cecece);
+	box-shadow: 1px 1px 0px #c2c2c2;
+	box-shadow: var(--theme-container-box-shadow, 1px 1px 0px #c2c2c2);
+	border-radius: 3px;
 }
 
 .icon-img {
-    width:15px;
-    height:15px;
-    border-radius:3px;
-    vertical-align:-2px;
-    margin:4px;
-    opacity:0.7;
-    background:transparent;
+	width: 15px;
+	height: 15px;
+	border-radius: 3px;
+	vertical-align: -2px;
+	margin: 4px;
+	opacity: 0.7;
+	background: transparent;
 }
 
-.about-author {
-    
+img[alt=Harvey] {
+	display: block;
+    margin: auto;
 }
