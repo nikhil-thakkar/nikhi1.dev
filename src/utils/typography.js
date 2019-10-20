@@ -11,10 +11,16 @@ FairyGates.overrideThemeStyles = () => {
     },
     blockquote: {
       fontStyle: 'normal',
-      borderLeft: `${typography.rhythm(3 / 16)} solid `
+      borderLeft: `${typography.rhythm(3 / 16)} solid black`
     },
     "h1 > a": {
       backgroundImage: 'none',
+    },
+    [`@media only screen and (max-width: 480px)`]: {
+      blockquote: {
+        fontStyle: 'normal',
+      borderLeft: `${typography.rhythm(3 / 16)} solid black`
+      }
     }
   }
 }

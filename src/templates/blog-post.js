@@ -4,9 +4,10 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/tags"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 import Author from "../components/author"
 import Bio from "../components/bio"
+import Header from '../components/header'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,9 +16,10 @@ class BlogPostTemplate extends React.Component {
     const tags = data.markdownRemark.frontmatter.tags
     const readingTime = data.markdownRemark.fields.readingTime.text
     const { previous, next } = this.props.pageContext
-
     
     return (
+      <React.Fragment>
+      <Header title={data.site.siteMetadata.title}/>
       <Layout location={location} className={'article'}>
         <SEO
           title={post.frontmatter.title}
@@ -58,6 +60,7 @@ class BlogPostTemplate extends React.Component {
           </li>
         </ul>
       </Layout>
+      </React.Fragment>
     )
   }
 }
@@ -78,7 +81,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMM DD")
+        date(formatString: "MMM DD, YYYY")
         description
         tags
       }

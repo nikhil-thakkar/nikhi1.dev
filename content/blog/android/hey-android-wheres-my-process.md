@@ -1,9 +1,9 @@
 ---
 path: /android/
 date: 2019-10-11T17:54:08.066Z
-title: 'Hey Android, Where''s my Process?'
+title: 'Hey Android, Where''s my Process? Part I'
 description: '#android #testing #processkill'
-tags: ["android", "testing", "processkill"]
+tags: ["android", "testing", "processkill", "advanced"]
 ---
 
 > Sometimes good guys gotta do bad things to make the bad guys pay. 
@@ -29,7 +29,7 @@ Now that we have established the reason to test these edge cases, its time to si
 The camera app on your phone is resource-intensive and requires a lot of RAM to run. Once you start the app, this results in the systematic killing of your background apps almost instantly. Mind well this might not be true for every scenario. Only opt for this approach if you are lazy :grin:.
 
 ### The Nerdy way 😎
-Let's get our hands dirty and run some terminal commands. Assuming an Android emulator is available and you have the sample project running, go to terminal and type this command (these commands have been tested on Android emulator running P):
+Let's get our hands dirty and run some terminal commands. Assuming an Android emulator is available and you have the sample project running with applicationId **com.processkill.example**, go to terminal and type this command (these commands have been tested on Android emulator running P)
 
 ```
 adb shell pidof com.processkill.example
@@ -54,17 +54,20 @@ There could be a number of reasons for this:
 * Maybe the way you have implemented the app architecture without giving 
   careful thought about the state of the app in such scenarios.
 * You were short on time, which is mostly the case, in fast pace driven development.
-* Android itself :smirk:.
-* Add your own reason :grin:.
+* Android itself :smirk:
+* Add your own reason :grin:
 
-> The issue/feature about **Android** is that it will automagically re-create the last Activity and also re-attach the Fragments, if any, from your Task Stack if the user resumes the app after it has been killed by OS. This is different from **iOS** behaviour wherein the OS doesn't acts smart to restore the last ViewController automatically.
+> The issue/feature about **Android** is that it will automagically re-create the last Activity and also re-attach the Fragments, if any, from your Task Stack if the user resumes the app after it has been killed by OS. This is different from **iOS** behaviour wherein the OS doesn't restore the last ViewController automatically.
 
-Though the intentions from Android seems correct resulting in better UX, it throws a challenge for us, developers, to handle these scenarios and think of it while designing apps.
+Though the intention from Android seem correct resulting in better UX, it throws a challenge for us, developers, to handle these scenarios and think of it while designing apps.
 
 Let's see what we can do here and strike a balance between UX and state of the app.
 
+### But first, repeat after me:
+> Static and/or member variables defined in the **Application** or any **Singleton** class won't survive the **process kill** and will reset to their default values which could be **null**. Remember `NullPointerException` :scream:.
+
 #### Scenario: 1
-You don't have any caching/persistence strategy in place for your app. Even the static and/or member variables defined in the **Application** or any **Singleton** class won't survive the process kill and will reset to their default values which could be null.
+You don't have any caching/persistence strategy implemented for your app.
 
 In such scenarios, the easiest way out would be to start from a clean slate. Here is the code that can potentially go inside the BaseActivity class.
 
@@ -88,11 +91,14 @@ override fun onSaveInstanceState(outState: Bundle) {
       outState.putString(PID_KEY, android.os.Process.myPid().toString())
   }
 ```
+**Developer Warning**⚠️  Use this solution only as a last resort.
 
 What this piece of code is doing is that if we detect our app has been recreated because of the process kill then we re-direct the app to the launcher activity which in this case is the SplashActvity.
 
-At first, you would be tempted to use this solution in every app you have built. But this is would be bad for UX as the user expects to start off from where he/she left your application.
+At first, you would be tempted to use this solution in every app you have built. But this would be bad for UX as the user expects to start off from where he/she left your application.
 
-**Warning**⚠️  Use this solution only as a last resort.
+#### Scenario: 2(Coming soon)
 
-#### Scenario: 2
+### Further Reading
+* [Processes and Threads](https://developer.android.com/guide/components/processes-and-threads)
+* [Android Lifecycle Cheatsheet](https://github.com/JoseAlcerreca/android-lifecycles)

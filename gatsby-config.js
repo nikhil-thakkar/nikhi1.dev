@@ -7,11 +7,12 @@ module.exports = {
     siteUrl: `https://nikhi1.dev/`,
     social: {
       twitter: `_nikhi1`,
+      github: 'nikhil-thakkar'
     },
+    bio: 'Lazy developer at 	❤️. Love to talk about anything tech.'
   },
   plugins: [
     `gatsby-plugin-netlify-cms`,
-    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
@@ -50,7 +51,8 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-emoji`,
-          `gatsby-remark-prismjs`
+          `gatsby-remark-prismjs`,
+          `gatsby-plugin-emotion`
         ],
       },
     },
@@ -58,7 +60,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // edit below
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-150463431-1`,
       },
     },
     {
@@ -71,7 +73,7 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         // edit below
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/nikhi1.svg`,
       },
     },
     {
