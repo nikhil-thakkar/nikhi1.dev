@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { rhythm } from '../utils/typography';
 
 function Author(props) {

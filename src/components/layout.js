@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { Disqus } from "gatsby-plugin-disqus"
 
 import { rhythm, scale } from "../utils/typography"
@@ -14,7 +14,7 @@ class Layout extends React.Component {
     let disqusConfig = {
       url: `https://nikhi1.dev/${location.pathname}`
     }
-    console.log(this.props)
+    
     if (location.pathname === rootPath || location.pathname === blogPath) {
       header = (
         <h1
@@ -81,8 +81,7 @@ class Layout extends React.Component {
           }}/>
         }
         <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
+          © {new Date().getFullYear()}, Built with 	<span style={{fontSize: '15px', margin: 0}}>❤️</span>
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </Footer>
       </Wrapper>
