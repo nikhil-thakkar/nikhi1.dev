@@ -2,7 +2,7 @@ import React from "react"
 import styled from '@emotion/styled'
 
 const HeaderWrapper = styled.header`
-    position: fixed;
+    position: sticky;
     padding: 16px;
     background-color: black;
     width: 100%;

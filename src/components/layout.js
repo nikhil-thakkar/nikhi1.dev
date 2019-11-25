@@ -1,85 +1,23 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-import { Disqus } from "gatsby-plugin-disqus"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from "../utils/typography" 
+import Header from "./header"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children, className } = this.props
+    const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
-    let disqusConfig = {
-      url: `https://nikhi1.dev/${location.pathname}`
-    }
     
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+    
     return (
       <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(28),
-            padding: `${rhythm(0)} ${rhythm(3 / 4)}`,
-          }}
-          className={className}
-        >
-          <header>{header}</header>
+        <div>
+          <Header {...this.props}/>
           <main>{children}</main>
         </div>
-        { className &&
-          <Disqus config={disqusConfig} 
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(28),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}/>
-        }
         <Footer>
           © {new Date().getFullYear()}, Built with 	<span style={{fontSize: '15px', margin: 0}}>❤️</span>
           <a href="https://www.gatsbyjs.org">Gatsby</a>
@@ -91,11 +29,14 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   min-height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
 `
 
 const Footer = styled.footer`
   text-align: center;
   margin: 24px;
+  align-self: center;
 `
 
 export default Layout
