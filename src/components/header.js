@@ -2,7 +2,7 @@ import React from "react"
 import styled from '@emotion/styled'
 
 const HeaderWrapper = styled.header`
-    position: fixed;
+    position: sticky;
     padding: 16px;
     background-color: black;
     width: 100%;
@@ -11,12 +11,12 @@ const HeaderWrapper = styled.header`
     color: white;
     z-index: 999;
     
-    @media (min-width: 992px) {
+    @media (min-width: 961px) {
         padding-left: 240px;
         transition: all 0.5s ease-out;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: 960px) {
         padding-left: 16px;
         transition: all 0.5s ease-in;
     }
