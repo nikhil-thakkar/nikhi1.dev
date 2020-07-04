@@ -11,12 +11,12 @@ const HeaderWrapper = styled.header`
     color: white;
     z-index: 999;
     
-    @media (min-width: 992px) {
+    @media (min-width: 961px) {
         padding-left: 240px;
         transition: all 0.5s ease-out;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: 960px) {
         padding-left: 16px;
         transition: all 0.5s ease-in;
     }
